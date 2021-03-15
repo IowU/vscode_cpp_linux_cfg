@@ -1,5 +1,5 @@
 # vscode_cpp_linux_cfg
-A basic collection of some tweaks I'm using to develop with C++ on Linux (fedora), using the gcc compiler. This assumes you already have VSCode, the gcc compiler (which you most likely have since you are on linux) and the C/C++ extension installed.
+A basic collection of some tweaks I'm using to develop with C++ on Linux (fedora), using the gcc compiler. This assumes you already have VSCode, the gcc compiler (which you most likely have since you are on linux) and the C/C++ extension for VSCode installed.
 
 The three files that are present in the repository, namely
 
@@ -7,7 +7,7 @@ The three files that are present in the repository, namely
 * **launch.json**
 * **tasks.json**
 
-have to be copied in the .vscode directory in your workspace. If you are starting a new project, you can just create the .vscode folder and copy-paste them there.
+have to be copied in the .vscode directory in your workspace. If you are starting a new project, you can just create the .vscode folder yourself and copy-paste them there.
 
 ## tasks.json
 
@@ -19,7 +19,7 @@ args indicate what arguments should be passed to the command specified above. Le
 this is required to debug your code
 
 `${workspaceFolder}/*.cpp`
-this is slightly different from the defaul value that vscode puts in (`${file}`). By using `${workspaceFolder}/*.cpp` I've been able to make vscode compile even files with user defined headers, which wasn't possible with the default value. Example:
+this is slightly different from the defaul value that VSCode puts in (`${file}`). By using `${workspaceFolder}/*.cpp` I've been able to make VSCode compile even files with user defined headers, which wasn't possible with the default value. Example:
 
 file **add.h**
 
@@ -68,16 +68,16 @@ This tells the compiler where to put the executable file created. Note that I'm 
 ```
 -Wall	-Weffc++ -pedantic-errors -Wextra -Wsign-conversion
  ```
- These flags are telling the compiler what errors (and their level) it should catch. With these settings it catches the majority of them; I chose it because I'm learning the language, so I prefer a stricter check on the code. The -pedantic-errors will treat warnings as errors.
+ These flags are telling the compiler what errors (and their level) it should catch. With these settings it catches the majority of them; I chose it because I'm learning the language, so I prefer a stricter check on the code. The `-pedantic-errors` will treat warnings as errors.
  
  ```json
  "group": {
-				"kind": "build",
-				"isDefault": true
-			}
+		"kind": "build",
+		"isDefault": true
+	  }
  ```
  
- This tells VSCode to use this configuration as the default one.
+ This tells VSCode to use this configuration as the default one. At the moment the compiler creates an executable only for the current file, although it will link all the dependencies/headers if needed. I suggest using it on your main file. I'll try to make it work better.
  
  ## launch.json
  
@@ -89,4 +89,14 @@ This tells the compiler where to put the executable file created. Note that I'm 
  ```"preLaunchTask": "C/C++: g++ build active file"```
  This line is simply saying what command or job it should execute before running the code. The value I have used is the same label present in the tasks.json file. If the executable doesn't exist or you have made some changes to the code, it will automatically re-compile the code. It's just a way to save time because we can just hit the Run command instead of compile and then Run.
  
+ ## c_cpp_properties.json
  
+ This file contains the settings for the C/C++ extension from the VSCode marketplace. The `include` path will tell the compiler where to check for headers, while
+ 
+ ```
+ "cStandard": "c17",
+ "cppStandard": "c++17"
+ ```
+ 
+ sets the language standard. Lastly, `intelliSenseMode` should be set to match the architecture you are developing on (I'm using fedora 64 bit). You can also change this configs by using a GUI menu: open the command palette, then type 
+`C/C++:Edit Configurations (UI)`.
