@@ -1,11 +1,11 @@
 # vscode_cpp_linux_cfg
-A basic collection of some tweaks I'm using to develop with C++ on Linux (fedora), using the gcc compiler. This assumes you already have VSCode installed and the gcc compiler (which you most likely have since you are on linux).
+A basic collection of some tweaks I'm using to develop with C++ on Linux (fedora), using the gcc compiler. This assumes you already have VSCode, the gcc compiler (which you most likely have since you are on linux) and the C/C++ extension installed.
 
 The three files that are present in the repository, namely
 
-* c_cpp_properties.json
-* launch.json
-* tasks.json
+* **c_cpp_properties.json**
+* **launch.json**
+* **tasks.json**
 
 have to be copied in the .vscode directory in your workspace. If you are starting a new project, you can just create the .vscode folder and copy-paste them there.
 
@@ -16,12 +16,12 @@ This file is the one responsible for the compilation phase of your .cpp files. T
 args indicate what arguments should be passed to the command specified above. Let's take a closer look to what we have:
 
 `-g` 
-this is required to be able to debug your code
+this is required to debug your code
 
 `${workspaceFolder}/*.cpp`
 this is slightly different from the defaul value that vscode puts in (`${file}`). By using `${workspaceFolder}/*.cpp` I've been able to make vscode compile even files with user defined headers, which wasn't possible with the default value. Example:
 
-file add.h
+file **add.h**
 
 ```cpp
 #ifndef ADD_H
@@ -35,7 +35,7 @@ namespace my_functions
 #endif
 ```
 
-file add.cpp
+file **add.cpp**
 
 ```cpp
 namespace my_functions
@@ -47,7 +47,7 @@ namespace my_functions
     }
 }
 ```
-file main.cpp
+file **main.cpp**
 
 ```cpp
 #include "maths_functions.h"
