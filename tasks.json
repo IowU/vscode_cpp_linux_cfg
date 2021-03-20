@@ -14,7 +14,8 @@
 				"-Weffc++",
 				"-pedantic-errors",
 				"-Wextra",
-				"-Wsign-conversion"
+				"-Wsign-conversion",
+				"-Werror"
 				
 			],
 			"options": {
