@@ -66,9 +66,9 @@ By using `${workspaceFolder}/*.cpp` as pointed out, the linker can find the defi
 This tells the compiler where to put the executable file created. Note that I'm telling it to place it in the bin directory inside the current project. The downside is that you have to manually create the bin folder before launching the compiler. Of course, you can choose a different path: this is just something that I changed so that executables aren't mixed with source files.
 
 ```
--Wall	-Weffc++ -pedantic-errors -Wextra -Wsign-conversion
+-Wall	-Weffc++ -pedantic-errors -Wextra -Wsign-conversion -Werror
  ```
- These flags are telling the compiler what errors (and their level) it should catch. With these settings it catches the majority of them; I chose it because I'm learning the language, so I prefer a stricter check on the code. The `-pedantic-errors` will treat warnings as errors.
+ These flags are telling the compiler what errors (and their level) it should catch. With these settings it catches the majority of them; I chose it because I'm learning the language, so I prefer a stricter check on the code. The `-Werror` will treat warnings as errors.
  
  ```json
  "group": {
