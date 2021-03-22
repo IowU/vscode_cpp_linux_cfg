@@ -98,5 +98,5 @@ This tells the compiler where to put the executable file created. Note that I'm 
  "cppStandard": "c++17"
  ```
  
- sets the language standard. Lastly, `intelliSenseMode` should be set to match the architecture you are developing on (I'm using fedora 64 bit). You can also change this configs by using a GUI menu: open the command palette, then type 
+ sets the language standard used for IntelliSense. Lastly, `intelliSenseMode` should be set to match the architecture you are developing on (I'm using fedora 64 bit). You can also change this configs by using a GUI menu: open the command palette, then type 
 `C/C++:Edit Configurations (UI)`.
